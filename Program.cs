@@ -1,3 +1,9 @@
+using KitsGade.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using SeuProjeto.Models;
+
 namespace KitsGade
 {
     public class Program
@@ -11,8 +17,10 @@ namespace KitsGade
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+           
+
+                // Configure the HTTP request pipeline.
+                if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
