@@ -25,11 +25,17 @@ namespace KitsGade.Models
         [Required(ErrorMessage = "Informe o preço do Produto")]
         [Display(Name = "Preço")]
         [Column(TypeName ="decimal(10,2)")]
-        [Range(1, 999.99, ErrorMessage ="O preço deve estar entre ")]
+        [Range(1, 999.99, ErrorMessage ="O preço deve estar entre 1 e 999,99")]
         public decimal Preco { get; set; }
+        [Display(Name ="Caminho da imagem Normal")]
+        [StringLength(200, ErrorMessage ="O {0} deve ter no máximo {1} caracteres")]
         public string ImagemUrl { get; set; }
+        [Display(Name = "Caminho da imagem Miniatura")]
+        [StringLength(200, ErrorMessage = "O {0} deve ter no máximo {1} caracteres")]
         public string ImagemThumbnailUrl { get; set; }
+        [Display(Name = "Preferido?")]
         public bool IsProdutoPreferido { get; set; }
+        [Display(Name = "Estoque")]
         public bool EmEstoque { get; set; }
 
         public int CategoriaId { get; set; }
