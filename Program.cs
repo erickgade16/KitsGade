@@ -2,7 +2,7 @@ using KitsGade.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using SeuProjeto.Models;
+using KitsGade.Models;
 
 namespace KitsGade
 {
