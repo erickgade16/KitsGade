@@ -10,12 +10,12 @@ namespace KitsGade.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("INSERT INTO Categorias(CategoriaNome)"+
-                "VALUES('Tênis')");
-            migrationBuilder.Sql("INSERT INTO Categorias(CategoriaNome)" +
-               "VALUES('Camisa')");
-            migrationBuilder.Sql("INSERT INTO Categorias(CategoriaNome)" +
-               "VALUES('Moletom')");
+            migrationBuilder.Sql("INSERT INTO Categorias(CategoriaName, Descricao)"+
+                "VALUES('Tênis','Produto de alta qualidade')");
+            migrationBuilder.Sql("INSERT INTO Categorias(CategoriaName, Descricao)" +
+               "VALUES('Camisa','Produto de alta qualidade')");
+            migrationBuilder.Sql("INSERT INTO Categorias(CategoriaName, Descricao)" +
+               "VALUES('Moletom','Produto de alta qualidade')");
         }
 
         /// <inheritdoc />
