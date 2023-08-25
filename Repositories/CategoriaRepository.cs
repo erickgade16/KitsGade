@@ -1,6 +1,19 @@
-﻿namespace KitsGade.Repositories
+﻿using KitsGade.Context;
+using KitsGade.Models;
+using KitsGade.Repositories.Interfaces;
+
+namespace KitsGade.Repositories
 {
-    public class CategoriaRepository
+    public class CategoriaRepository:ICategoriaRepository
     {
+        private readonly AppDbContext _context;
+
+        public CategoriaRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public IEnumerable<Categoria> Categorias => _context.Categorias;
+
     }
 }
