@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using KitsGade.Models;
 using KitsGade.Context;
+using KitsGade.Repositories.Interfaces;
+using KitsGade.Repositories;
 
 namespace KitsGade
 {
@@ -23,6 +25,8 @@ namespace KitsGade
             services.AddDbContext<AppDbContext>(options =>
      options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddTransient<IProdutosRepository, ProdutosRepository>();
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
             services.AddControllersWithViews();
         }
