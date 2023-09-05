@@ -1,20 +1,20 @@
-﻿@model IEnumerable<KitsGade.Models.Produto>
+﻿@model ProdutoListViewModel
 
 <div>
-    <h2>Todos Produtos</h2>
+    <h2>Categoria Atual</h2>
 </div>
 <br />
 <div class="container">
-<div class="row">
+    <div class="row">
 
-@foreach (var produto in Model)
-{
-    <div class="col-sm-4 col-md-4 col-lg-4">
-                <p><img src="@produto.ImagemUrl" width=200px height=200px margin-right=50px ></p>
+        @foreach (var produto in Model.Produtos)
+        {
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <p><img src="@produto.ImagemUrl" width=200px height=200px margin-right=50px></p>
                 <h3>Preço : @produto.Preco.ToString("c")</h3>
                 <h4>@produto.Nome</h4>
                 <p>@produto.DescricaoCurta</p>
+            </div>
+        }
     </div>
-}
-</div>
 </div>

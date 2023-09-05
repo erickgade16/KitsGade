@@ -1,4 +1,5 @@
 ﻿using KitsGade.Repositories.Interfaces;
+using KitsGade.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KitsGade.Controllers
@@ -14,8 +15,12 @@ namespace KitsGade.Controllers
 
         public IActionResult List()
         {
-            var produtos = _produtosRepository.Produtos;
-            return View(produtos);
+            //var produtos = _produtosRepository.Produtos;
+            //return View(produtos);
+            var produtoListViewModel = new ProdutoListViewModel();
+            produtoListViewModel.Produtos = _produtosRepository.Produtos;
+            produtoListViewModel.CategoriaAtual = "Categoria Atual";
+            return View(produtoListViewModel);
         }
     }
 }
