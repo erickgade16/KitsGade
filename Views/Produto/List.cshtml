@@ -9,12 +9,7 @@
 
         @foreach (var produto in Model.Produtos)
         {
-            <div class="col-sm-4 col-md-4 col-lg-4">
-                <p><img src="@produto.ImagemUrl" width=200px height=200px margin-right=50px></p>
-                <h3>Preço : @produto.Preco.ToString("c")</h3>
-                <h4>@produto.Nome</h4>
-                <p>@produto.DescricaoCurta</p>
-            </div>
+            <partial name="_ProdutosResumo" for="@produto"/>
         }
     </div>
 </div>
