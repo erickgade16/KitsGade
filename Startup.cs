@@ -27,8 +27,12 @@ namespace KitsGade
 
             services.AddTransient<IProdutosRepository, ProdutosRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddSingleton<IHttpContextAcessor, HttpContextAcessor>();
 
             services.AddControllersWithViews();
+
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +51,7 @@ namespace KitsGade
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
