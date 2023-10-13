@@ -27,7 +27,7 @@ namespace KitsGade
 
             services.AddTransient<IProdutosRepository, ProdutosRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-            services.AddSingleton<IHttpContextAcessor, HttpContextAcessor>();
+            //services.AddSingleton<IHttpContextAcessor, HttpContextAcessor>();
 
             services.AddControllersWithViews();
 
