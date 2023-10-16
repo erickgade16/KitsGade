@@ -28,6 +28,7 @@ namespace KitsGade
             services.AddTransient<IProdutosRepository, ProdutosRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
 
