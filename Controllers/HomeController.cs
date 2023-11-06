@@ -1,4 +1,6 @@
 ﻿using KitsGade.Models;
+using KitsGade.Repositories.Interfaces;
+using KitsGade.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +8,26 @@ namespace KitsGade.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
+        private readonly IProdutosRepository _produtosRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProdutosRepository produtosRepository)
         {
-            _logger = logger;
+            _produtosRepository = produtosRepository;
         }
+        //private readonly ILogger<HomeController> _logger;
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                ProdutosPreferidos = _produtosRepository.ProdutosPreferidos
+            };
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
