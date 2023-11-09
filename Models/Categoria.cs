@@ -11,7 +11,7 @@ namespace KitsGade.Models
         [StringLength(100, ErrorMessage = "O tamanho máximo é de 100 caracteres")]
         [Required(ErrorMessage ="Informe o nome da categoria")]
         [Display(Name = "Nome")]
-        public string CategoriaName { get; set; }
+        public string CategoriaNome { get; set; }
         [StringLength(200, ErrorMessage = "O tamanho máximo é de 200 caracteres")]
         [Required(ErrorMessage = "Informe a descrição da categoria")]
         [Display(Name = "Descrição")]
