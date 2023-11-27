@@ -41,5 +41,11 @@ namespace KitsGade.Controllers
 
             return View(produtoListViewModel);
         }
+
+        public IActionResult Details(int produtoId) 
+        {
+            var produto = _produtosRepository.Produtos.FirstOrDefault(l =>l.ProdutoId == produtoId);
+            return View(produto);
+        }
     }
 }
