@@ -26,9 +26,14 @@ namespace KitsGade.Controllers
             }
             else
             {
-                if(string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals("Camisa", categoria, StringComparison.OrdinalIgnoreCase))
                 {
-                    produtos = _produtosRepository.Produtos.Where(l => l.Categoria.CategoriaNome.Equals("Normal"))
+                    produtos = _produtosRepository.Produtos.Where(l => l.Categoria.CategoriaNome.Equals("Camisa"))
+                        .OrderBy(l => l.ProdutoId);
+                }
+                else if (string.Equals("Moletom", categoria, StringComparison.OrdinalIgnoreCase))
+                {
+                    produtos = _produtosRepository.Produtos.Where(l => l.Categoria.CategoriaNome.Equals("Moletom"))
                         .OrderBy(l => l.ProdutoId);
                 }
                 else
@@ -44,7 +49,7 @@ namespace KitsGade.Controllers
                 CategoriaAtual = categoriaAtual
             };
 
-            
+
             return View(produtoListViewModel);
         }
     }
