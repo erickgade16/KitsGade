@@ -47,5 +47,31 @@ namespace KitsGade.Controllers
             var produto = _produtosRepository.Produtos.FirstOrDefault(l =>l.ProdutoId == produtoId);
             return View(produto);
         }
+
+        public ViewResult Search(string searchString)
+        {
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(searchString))
+            {
+                produtos = _produtosRepository.Produtos.OrderBy(p=>p.ProdutoId);
+                categoriaAtual = "Todos Produtos";
+            }
+            else
+            {
+                produtos = _produtosRepository.Produtos.Where(p => p.Nome.ToLower().Contains(searchString.ToLower()));
+
+                if(produtos.Any())
+                { categoriaAtual = "Produtos"; }
+                else
+                { categoriaAtual = "Nenhum produto encontrado"; }
+            }
+            return View("~/Views/Produto/List.cshtml", new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual
+            });
+        }
     }
 }

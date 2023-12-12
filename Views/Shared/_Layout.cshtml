@@ -95,6 +95,11 @@
                         </li>
                         @await Component.InvokeAsync("CategoriaMenu")
                         @await Component.InvokeAsync("CarrinhoCompraResumo")
+                        <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Procurar Produto" name="searchString" value="@ViewData["searchString"]" />
+                            </div>
+                        </form>
                         
                     </ul>
                 </div>
