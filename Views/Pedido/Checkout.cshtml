@@ -77,14 +77,15 @@
         </div>
 
         <br />
-        <div class="form-group">
-            <input class="btn btn-success" type="submit" value="Concluir Pedido" />
+        <div class="d-flex">
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Concluir Pedido" />
+            </div>
+
+            <div class="form-group ml-2">
+                <a class="btn btn-outline-info" asp-controller="CarrinhoCompra" asp-action="Index">Retornar ao Carrinho</a>
+            </div>
         </div>
 
-        &nbsp;
-
-        <div class="form-group">
-            <a class="btn btn-outline-info" asp-controller="CarrinhoCompra" asp-action="Index">Retornar ao Carrinho</a>
-        </div>
 
 </form>
