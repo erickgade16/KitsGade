@@ -29,7 +29,7 @@ namespace KitsGade.Repositories
                     Quantidade = carrinhoItem.Quantidade,
                     ProdutoId = carrinhoItem.Produto.ProdutoId,
                     PedidoId = pedido.PedidoId,
-                    Preco = carrinhoItem.Produto.Preco,
+                    Preco = carrinhoItem.Produto.Preco
                 };
                 _appDbContext.PedidoDetalhes.Add(pedidoDetail);
             }

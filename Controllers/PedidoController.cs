@@ -24,7 +24,7 @@ namespace KitsGade.Controllers
         public IActionResult Checkout(Pedido pedido) 
         {
             int totalItensPedido = 0;
-            decimal precoTotalPedido = 0;
+            decimal precoTotalPedido = 0.0m;
 
             //obtem  os items do carrinho de compra
             List<CarrinhoCompraItem> items = _carrinhoCompra.GetCarrinhoCompraItens();
@@ -58,13 +58,14 @@ namespace KitsGade.Controllers
 
                 //definir mensagens ao cliente
                 ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido!";
-                ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraItens();
+                //ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraItens();
+                ViewBag.TotalPedido = precoTotalPedido;
 
                 //limpar carrinho
                 _carrinhoCompra.LimparCarrinho();
 
                 //Exibe a view com  dados do cliente  e do pedido
-                return View("~/View/Pedido/CheckoutCompleto.cshtml", pedido);
+                return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
             }
             return View(pedido);
 
