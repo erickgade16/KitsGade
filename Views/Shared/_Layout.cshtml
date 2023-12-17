@@ -84,24 +84,32 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item mr-2">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item mr-2">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
-                        </li>
-                        @* Outros itens aqui *@
-                        <li class="nav-item mr-2">
-                            @await Component.InvokeAsync("CategoriaMenu")
-                        </li>
-                        <li class="nav-item mr-2">
-                            @await Component.InvokeAsync("CarrinhoCompraResumo")
-                        </li>
-                        <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Procurar Produto" name="searchString" value="@ViewData["searchString"]" />
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mx-auto text-center">
+                                    <li class="nav-item mr-2">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item mr-2">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
+                                    </li>
+                                    @* Outros itens aqui *@
+                                    <li class="nav-item mr-2">
+                                        @await Component.InvokeAsync("CategoriaMenu")
+                                    </li>
+                                    <li class="nav-item mr-2">
+                                        @await Component.InvokeAsync("CarrinhoCompraResumo")
+                                    </li>
+                                </ul>
+
+                                <form class="form-inline my-2 my-lg-0" asp-controller="Produto" asp-action="Search" method="get">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Procurar Produto" name="searchString" value="@ViewData["searchString"]" />
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </nav>
+
                     </ul>
                 </div>
 
