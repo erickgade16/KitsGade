@@ -8,6 +8,7 @@ using KitsGade.Models;
 using KitsGade.Context;
 using KitsGade.Repositories.Interfaces;
 using KitsGade.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 namespace KitsGade
 {
@@ -24,6 +25,10 @@ namespace KitsGade
         {
             services.AddDbContext<AppDbContext>(options =>
      options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
 
             services.AddTransient<IProdutosRepository, ProdutosRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
@@ -55,6 +60,7 @@ namespace KitsGade
             app.UseRouting();
             app.UseSession();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
