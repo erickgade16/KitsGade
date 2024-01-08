@@ -1,0 +1,9 @@
+﻿/* Adicione ao seu arquivo de estilos (styles.css) */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Adapte a cor de fundo conforme necessário */
+    padding: 10px;
+    text-align: center;
+}
