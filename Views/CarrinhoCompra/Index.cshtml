@@ -26,7 +26,7 @@
                         <td class="text-right">@item.Produto.Preco.ToString("c")</td>
                         <td class="text-right">@((item.Quantidade * item.Produto.Preco).ToString("c"))</td>
                         <td class="text-center">
-                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemCarrinhoCompra"
+                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemNoCarrinhoCompra"
                                asp-route-produtoId="@item.Produto.ProdutoId">
                                 <img src="~/imagens/delete.png" />
                             </a>
