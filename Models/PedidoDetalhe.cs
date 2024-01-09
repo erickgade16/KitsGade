@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KitsGade.Models
 {
@@ -9,6 +10,7 @@ namespace KitsGade.Models
         public int ProdutoId { get; set; }
         public int Quantidade { get; set; }
         [Column(TypeName ="decimal(18,2)")]
+        [Display(Name = "Preço")]
         public decimal Preco { get; set; }
         public virtual Produto Produto { get; set; }
         public virtual Pedido Pedido { get; set; }
