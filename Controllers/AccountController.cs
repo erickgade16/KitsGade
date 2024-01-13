@@ -75,8 +75,8 @@ namespace KitsGade.Controllers
                 {
                     this.ModelState.AddModelError("Registro", "Falha ao registrar o usúario")
                 }
-                return View(registroVM);
             }
+            return View(registroVM);
 
         }
     }
