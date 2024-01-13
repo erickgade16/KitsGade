@@ -29,29 +29,29 @@ namespace KitsGade.Controllers
             if (!ModelState.IsValid)
             {
                 return View(loginVM);
+            }
 
-                var user = await _userManager.FindByNameAsync(loginVM.UserName);
+            var user = await _userManager.FindByNameAsync(loginVM.UserName);
 
-                if (user != null)
+            if (user != null)
+            {
+                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+
+                if (result.Succeeded)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
-
-                    if (result.Succeeded)
+                    if (string.IsNullOrEmpty(loginVM.ReturnUrl))
                     {
-                        if (string.IsNullOrEmpty(loginVM.ReturnUrl))
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
-                        return Redirect(loginVM.ReturnUrl);
+                        return RedirectToAction("Index", "Home");
                     }
+
+                    return Redirect(loginVM.ReturnUrl);
                 }
             }
-            else
-            {
-                ModelState.AddModelError("", "Falha ao realizar o login!");
-                return View(loginVM);
-            }
+
+            ModelState.AddModelError("", "Falha ao realizar o login!");
+            return View(loginVM);
         }
+
 
         public ActionResult Register() 
         {
@@ -73,7 +73,7 @@ namespace KitsGade.Controllers
                 }
                 else
                 {
-                    this.ModelState.AddModelError("Registro", "Falha ao registrar o usúario")
+                    this.ModelState.AddModelError("Registro", "Falha ao registrar o usuário");
                 }
             }
             return View(registroVM);
