@@ -1,11 +1,13 @@
 ﻿using KitsGade.Models;
 using KitsGade.Repositories.Interfaces;
 using KitsGade.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace KitsGade.Controllers
 {
+    [Authorize]
     public class CarrinhoCompraController : Controller
     {
         private readonly IProdutosRepository _produtosRepository;

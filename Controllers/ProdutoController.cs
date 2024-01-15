@@ -1,10 +1,13 @@
 ﻿using KitsGade.Models;
 using KitsGade.Repositories.Interfaces;
 using KitsGade.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KitsGade.Controllers
+
 {
+    [AllowAnonymous]
     public class ProdutoController : Controller
     {
         private readonly IProdutosRepository _produtosRepository;

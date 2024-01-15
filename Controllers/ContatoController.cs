@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace KitsGade.Controllers
 {
+    [AllowAnonymous]
     public class ContatoController : Controller
     {
         public IActionResult Index()

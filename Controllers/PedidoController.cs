@@ -1,9 +1,11 @@
 ﻿using KitsGade.Models;
 using KitsGade.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KitsGade.Controllers
 {
+    [Authorize]
     public class PedidoController : Controller
     {
         private readonly IPedidoRepository _pedidoRepository;
