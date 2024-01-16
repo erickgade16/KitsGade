@@ -40,8 +40,8 @@ namespace KitsGade
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 3;
                 options.Password.RequiredUniqueChars = 1;
-            } );
-            
+            });
+
             services.AddTransient<IProdutosRepository, ProdutosRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
@@ -77,6 +77,12 @@ namespace KitsGade
 
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+
                 endpoints.MapControllerRoute(
                   name: "categoriaFiltro",
                   pattern: "Produto/{action}/{categoria?}",
