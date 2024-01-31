@@ -9,6 +9,7 @@ using KitsGade.Context;
 using KitsGade.Repositories.Interfaces;
 using KitsGade.Repositories;
 using Microsoft.AspNetCore.Identity;
+using KitsGade.Services;
 
 namespace KitsGade
 {
@@ -46,6 +47,7 @@ namespace KitsGade
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
@@ -54,7 +56,8 @@ namespace KitsGade
             services.AddSession();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, 
+            ISeedUserRoleInitial seedUserRoleInitial)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +73,10 @@ namespace KitsGade
             app.UseStaticFiles();
 
             app.UseRouting();
+            seedUserRoleInitial.SeedRoles();
+            seedUserRoleInitial.SeedUsers();
+
+
             app.UseSession();
 
             app.UseAuthentication();
