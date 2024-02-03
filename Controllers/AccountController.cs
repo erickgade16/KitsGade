@@ -53,9 +53,9 @@ namespace KitsGade.Controllers
         }
 
 
-        public ActionResult Register() 
+        public ActionResult Register()
         {
-            return View(); 
+            return View();
         }
 
         [HttpPost]
@@ -65,7 +65,7 @@ namespace KitsGade.Controllers
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = registroVM.UserName };
-                var result =  await _userManager.CreateAsync(user,registroVM.Password);
+                var result = await _userManager.CreateAsync(user, registroVM.Password);
 
                 if (result.Succeeded)
                 {
@@ -87,7 +87,12 @@ namespace KitsGade.Controllers
             HttpContext.Session.Clear();
             HttpContext.User = null;
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");   
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
