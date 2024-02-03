@@ -49,6 +49,13 @@ namespace KitsGade
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+            services.AddAuthorization(options =>
+                {
+                  options.AddPolicy("Admin", politica =>
+                    {
+                        politica.RequireRole("Admin");
+                    });
+                });
 
             services.AddControllersWithViews();
 

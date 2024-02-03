@@ -34,7 +34,7 @@ namespace KitsGade.Services
 
         public void SeedUsers()
         {
-            if(_userManager.FindByEmailAsync("usuario@localhost").Result == null)
+            if (_userManager.FindByEmailAsync("usuario@localhost").Result == null)
             {
                 IdentityUser user = new IdentityUser();
                 user.UserName = "usuario@localhost";
@@ -43,11 +43,11 @@ namespace KitsGade.Services
                 user.Email = "USUARIO@LOCALHOST";
                 user.LockoutEnabled = false;
                 user.EmailConfirmed = true;
-                user.SecurityStamp = Guid.NewGuid().ToString(); 
+                user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user,"Admin123@").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "Admin123@").Result;
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     _userManager.AddToRoleAsync(user, "Member").Wait();
                 }
@@ -71,5 +71,6 @@ namespace KitsGade.Services
                     _userManager.AddToRoleAsync(user, "Admin").Wait();
                 }
             }
+        }
     }
 }
