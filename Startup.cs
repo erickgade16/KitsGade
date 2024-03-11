@@ -10,6 +10,7 @@ using KitsGade.Repositories.Interfaces;
 using KitsGade.Repositories;
 using Microsoft.AspNetCore.Identity;
 using KitsGade.Services;
+using ReflectionIT.Mvc.Paging;
 
 namespace KitsGade
 {
@@ -58,6 +59,13 @@ namespace KitsGade
                 });
 
             services.AddControllersWithViews();
+
+            services.AddPaging(options =>
+            {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageindex";
+            });
+
 
             services.AddMemoryCache();
             services.AddSession();
