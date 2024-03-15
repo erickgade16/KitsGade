@@ -9,6 +9,7 @@ using KitsGade.Context;
 using KitsGade.Models;
 using Microsoft.AspNetCore.Authorization;
 using ReflectionIT.Mvc.Paging;
+using KitsGade.ViewModels;
 
 namespace KitsGade.Areas.Admin.Controllers
 {
@@ -18,9 +19,33 @@ namespace KitsGade.Areas.Admin.Controllers
     {
         private readonly AppDbContext _context;
 
+     
+
         public AdminPedidosController(AppDbContext context)
         {
             _context = context;
+        }
+
+        public IActionResult PedidoProdutos(int? id)
+        {
+            var pedido = _context.Pedidos
+                        .Include(pd => pd.PedidoItens)
+                        .ThenInclude(l => l.Produto)
+                        .FirstOrDefault(p => p.PedidoId == id);
+
+            if (pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNotFound", id.Value);
+            }
+
+            ProdutoPedidoViewModel pedidoProdutos = new ProdutoPedidoViewModel()
+            {
+                Pedido = pedido,
+                PedidoDetalhes = pedido.PedidoItens
+            };
+            return View(pedidoProdutos);
+
         }
 
         // GET: Admin/AdminPedidos
