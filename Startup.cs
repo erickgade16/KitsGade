@@ -11,6 +11,7 @@ using KitsGade.Repositories;
 using Microsoft.AspNetCore.Identity;
 using KitsGade.Services;
 using ReflectionIT.Mvc.Paging;
+using KitsGade.Areas.Admin.Servicos;
 
 namespace KitsGade
 {
@@ -50,6 +51,9 @@ namespace KitsGade
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+            services.AddScoped<RelatorioVendasServicos>();
+
+
             services.AddAuthorization(options =>
                 {
                   options.AddPolicy("Admin", politica =>
